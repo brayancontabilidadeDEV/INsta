@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Panorama Insta • Analytics e Tendências</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- HEADER -->
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <i class="fab fa-instagram"></i>
+          <span>Panorama Insta</span>
+        </div>
+        <div class="theme-toggle" id="themeToggle">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- SEARCH BAR -->
+    <section class="search-section">
+      <div class="search-card">
+        <h2>Análise inteligente para criadores e negócios</h2>
+        <p>Insira o @usuário ou o link do perfil do Instagram</p>
+        <form id="searchForm">
+          <div class="input-group">
+            <i class="fas fa-search"></i>
+            <input type="text" id="usernameInput" placeholder="Ex: @natgeo ou instagram.com/natgeo" autocomplete="off">
+            <button type="submit" id="analyzeBtn">Analisar</button>
+          </div>
+        </form>
+        <div id="errorMessage" class="error-message"></div>
+      </div>
+    </section>
+
+    <!-- LOADING -->
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Gerando panorama completo...</p>
+    </div>
+
+    <!-- DASHBOARD -->
+    <main id="dashboard" class="dashboard hidden">
+      <!-- Métricas principais -->
+      <section class="metrics-overview" id="overviewCards"></section>
+
+      <!-- Grid de gráficos -->
+      <section class="charts-grid">
+        <div class="chart-card">
+          <h3><i class="fas fa-users"></i> Crescimento de seguidores</h3>
+          <canvas id="followerGrowthChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3><i class="fas fa-venus-mars"></i> Gênero do público</h3>
+          <canvas id="genderChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3><i class="fas fa-calendar-alt"></i> Faixa etária</h3>
+          <canvas id="ageChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3><i class="fas fa-chart-line"></i> Engajamento (últimos 30d)</h3>
+          <canvas id="engagementChart"></canvas>
+        </div>
+      </section>
+
+      <!-- Melhores horários -->
+      <section class="best-times">
+        <div class="chart-card">
+          <h3><i class="far fa-clock"></i> Melhores horários para publicar</h3>
+          <canvas id="bestTimeChart"></canvas>
+        </div>
+      </section>
+
+      <!-- Performance de conteúdo -->
+      <section class="content-section">
+        <div class="chart-card">
+          <h3><i class="fas fa-thumbs-up"></i> Top 5 publicações (feed + Reels)</h3>
+          <div id="topPostsTable" class="table-responsive"></div>
+        </div>
+        <div class="chart-card">
+          <h3><i class="fas fa-video"></i> Visualizações dos Reels</h3>
+          <canvas id="reelsChart"></canvas>
+        </div>
+      </section>
+
+      <!-- Radar de tendências -->
+      <section class="trends-section">
+        <div class="chart-card">
+          <h3><i class="fas fa-hashtag"></i> Hashtags em ascensão (próxima semana)</h3>
+          <div id="trendingHashtags" class="hashtag-cloud"></div>
+        </div>
+        <div class="chart-card">
+          <h3><i class="fas fa-music"></i> Áudios e formatos virais</h3>
+          <ul id="trendingAudios" class="trend-list"></ul>
+        </div>
+      </section>
+
+      <!-- Concorrência -->
+      <section class="competitor-section">
+        <div class="chart-card">
+          <h3><i class="fas fa-chart-bar"></i> Comparativo com concorrentes</h3>
+          <canvas id="competitorChart"></canvas>
+          <div class="comp-add">
+            <input type="text" id="competitorInput" placeholder="Adicionar @concorrente (simulação)">
+            <button id="addCompetitorBtn">Comparar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>⚡ Ferramenta de demonstração – dados simulados. Para uso real, conecte a API do Instagram.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
